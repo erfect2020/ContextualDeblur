@@ -16,12 +16,14 @@ Harbin Institute of Technology, Harbin 150001, China. Electronic Information Sch
 </p>
 
 ## 📊Results
+### RealDOF
 <p align="center">
 <img width="1039" alt="image" src="https://github.com/erfect2020/ContextualDeblur/assets/94505384/f8685ca7-8210-4b4e-8508-625ecb35f545">
 </p>
 
+### LFDOF
 <p align="center">
-<img width="1039" alt="image" src="https://s3.bmp.ovh/imgs/2023/09/18/0dafe23b7f13594f.png">
+<img width="1039" alt="image" src="https://s3.bmp.ovh/imgs/2023/09/18/cc1ed375d87b8410.png">
 </p>
 
 ## Evaluation
