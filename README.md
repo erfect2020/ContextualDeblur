@@ -29,7 +29,7 @@ Harbin Institute of Technology, Harbin 150001, China. Electronic Information Sch
 ### Quantitative Result
 
 <table border="1" cellspacing="0" cellpadding="2">
-    <caption>Defocus deblurring comparisons on the DPDD test dataset, RealDOF dataset, and LFDOF dataset. Best and second best results are <strong>highlighted</strong> and <em>underlined</em>.</caption>
+    <caption>Defocus deblurring comparisons on the DPDD test dataset, RealDOF dataset, and LFDOF dataset. Best and second best results are <strong>highlighted</strong> and <em>italics</em>.</caption>
     <thead>
         <tr>
             <th rowspan="2">Method</th>
