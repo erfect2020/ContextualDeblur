@@ -108,22 +108,16 @@ Harbin Institute of Technology, Harbin 150001, China. Electronic Information Sch
             <td>30.253</td><td>0.883</td><td><u>0.147</u></td><td><strong>62.648</strong></td><td><strong>0.978</strong></td><td>0.622</td>
         </tr>
         <tr>
-            <td>OthersNet-1</td>
+            <td>NRKNet</td>
             <td>25.345</td><td>0.775</td><td>0.290</td><td>57.642</td><td>0.906</td><td>0.523</td>
             <td>23.918</td><td>0.721</td><td>0.382</td><td>28.531</td><td>0.900</td><td>0.517</td>
             <td>28.664</td><td>0.852</td><td>0.165</td><td>60.221</td><td>0.972</td><td>0.607</td>
         </tr>
         <tr>
-            <td>OthersNet-2</td>
+            <td>Ours</td>
             <td>25.192</td><td>0.771</td><td>0.279</td><td>56.992</td><td>0.902</td><td>0.520</td>
             <td>23.740</td><td>0.710</td><td>0.399</td><td>27.765</td><td>0.897</td><td>0.509</td>
             <td>28.815</td><td>0.847</td><td>0.172</td><td>60.005</td><td>0.971</td><td>0.604</td>
-        </tr>
-        <tr>
-            <td>OthersNet-3</td>
-            <td>25.217</td><td>0.773</td><td>0.265</td><td>57.348</td><td>0.905</td><td>0.522</td>
-            <td>23.888</td><td>0.716</td><td>0.391</td><td>28.214</td><td>0.899</td><td>0.513</td>
-            <td>28.942</td><td>0.856</td><td>0.169</td><td>60.327</td><td>0.971</td><td>0.606</td>
         </tr>
 
     </tbody>
