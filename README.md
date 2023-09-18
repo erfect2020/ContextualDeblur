@@ -129,7 +129,7 @@ Given a blurred image $x \in \mathbb{R}^{C\times H \times W}$, we first tokenize
 python disttest.py -opt options/test/Unify_DDPD_Test.yaml
 ```
 ## Reference
-[1] A. Abuolaim and M. S. Brown, “Defocus deblurring using dual-pixel data,” in Proceedings of the European Conference on Computer Vision, 2020. [code](https://github.com/Abdullah-Abuolaim/defocus-deblurring-dual-pixel) [paper](https://www.eecs.yorku.ca/~abuolaim/eccv_2020_dp_defocus_deblurring/)  
+[1] A. Abuolaim and M. S. Brown, “Defocus deblurring using dual-pixel data,” in Proceedings of the European Conference on Computer Vision, 2020. [\[code](https://github.com/Abdullah-Abuolaim/defocus-deblurring-dual-pixel),[paper](https://www.eecs.yorku.ca/~abuolaim/eccv_2020_dp_defocus_deblurring/)\]  
 [2] L. Ruan, B. Chen, J. Li, and M.-L. Lam, “Aifnet: All-in-focus image restoration network using a light field-based dataset,” IEEE Transactions on Computational Imaging, vol. 7, pp. 675–688, 2021.  
 [3] A. Abuolaim, M. Afifi, and M. S. Brown, “Improving single-image defocus deblurring: How dual-pixel images help through multi-task learning,” in Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision, 2022, pp. 1231–1239.  
 [4] H. Son, J. Lee, S. Cho, and S. Lee, “Single image defocus deblurring using kernel-sharing parallel atrous convolutions,” in Proceedings of the IEEE/CVF International Conference on Computer Vision, 2021, pp.2642–2650.  
