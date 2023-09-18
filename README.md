@@ -123,19 +123,12 @@ Given a blurred image $x \in \mathbb{R}^{C\times H \times W}$, we first tokenize
 python disttest.py -opt options/test/Unify_DDPD_Test.yaml
 ```
 ## Reference
-[1] A. Abuolaim and M. S. Brown, “Defocus deblurring using dual-pixel data,” in Proceedings of the European Conference on Computer Vision, 2020.
-
-[2] L. Ruan, B. Chen, J. Li, and M.-L. Lam, “Aifnet: All-in-focus image restoration network using a light field-based dataset,” IEEE Transactions on Computational Imaging, vol. 7, pp. 675–688, 2021.
-
-[3] A. Abuolaim, M. Afifi, and M. S. Brown, “Improving single-image defocus deblurring: How dual-pixel images help through multi-task learning,” in Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision, 2022, pp. 1231–1239.
-
-[4] H. Son, J. Lee, S. Cho, and S. Lee, “Single image defocus deblurring using kernel-sharing parallel atrous convolutions,” in Proceedings of the IEEE/CVF International Conference on Computer Vision, 2021, pp.2642–2650.
-
-[5] J. Lee, H. Son, J. Rim, S. Cho, and S. Lee, “Iterative filter adaptive network for single image defocus deblurring,” in Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2021, pp. 2034–2042.
-
-[6] Y. Quan, Z. Wu, and H. Ji, “Gaussian kernel mixture network for single image defocus deblurring,” Advances in Neural Information Processing Systems, vol. 34, pp. 20 812–20 824, 2021.
-
+[1] A. Abuolaim and M. S. Brown, “Defocus deblurring using dual-pixel data,” in Proceedings of the European Conference on Computer Vision, 2020.  
+[2] L. Ruan, B. Chen, J. Li, and M.-L. Lam, “Aifnet: All-in-focus image restoration network using a light field-based dataset,” IEEE Transactions on Computational Imaging, vol. 7, pp. 675–688, 2021.  
+[3] A. Abuolaim, M. Afifi, and M. S. Brown, “Improving single-image defocus deblurring: How dual-pixel images help through multi-task learning,” in Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision, 2022, pp. 1231–1239.  
+[4] H. Son, J. Lee, S. Cho, and S. Lee, “Single image defocus deblurring using kernel-sharing parallel atrous convolutions,” in Proceedings of the IEEE/CVF International Conference on Computer Vision, 2021, pp.2642–2650.  
+[5] J. Lee, H. Son, J. Rim, S. Cho, and S. Lee, “Iterative filter adaptive network for single image defocus deblurring,” in Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2021, pp. 2034–2042.  
+[6] Y. Quan, Z. Wu, and H. Ji, “Gaussian kernel mixture network for single image defocus deblurring,” Advances in Neural Information Processing Systems, vol. 34, pp. 20 812–20 824, 2021.  
 [7] L. Ruan, B. Chen, J. Li, and M. Lam, “Learning to deblur using light field generated and real defocus images,” in Proceedings of the
-IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2022, pp. 16 304–16 313.
-
+IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2022, pp. 16 304–16 313.  
 [8] Y. Quan, Z. Wu, and H. Ji, “Neumann network with recursive kernels for single image defocus deblurring,” in Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2023, pp. 5754–5763.
