@@ -38,24 +38,9 @@ Harbin Institute of Technology, Harbin 150001, China. Electronic Information Sch
             <th colspan="6">LFDOF</th>
         </tr>
         <tr>
-            <th>PSNR</th>
-            <th>SSIM</th>
-            <th>LPIPS</th>
-            <th>MUSIQ</th>
-            <th>FSIM</th>
-            <th>CKDN</th>
-            <th>PSNR</th>
-            <th>SSIM</th>
-            <th>LPIPS</th>
-            <th>MUSIQ</th>
-            <th>FSIM</th>
-            <th>CKDN</th>
-            <th>PSNR</th>
-            <th>SSIM</th>
-            <th>LPIPS</th>
-            <th>MUSIQ</th>
-            <th>FSIM</th>
-            <th>CKDN</th>
+            <th>PSNR</th><th>SSIM</th><th>LPIPS</th><th>MUSIQ</th><th>FSIM</th><th>CKDN</th>
+            <th>PSNR</th><th>SSIM</th><th>LPIPS</th><th>MUSIQ</th><th>FSIM</th><th>CKDN</th>
+            <th>PSNR</th><th>SSIM</th><th>LPIPS</th><th>MUSIQ</th><th>FSIM</th><th>CKDN</th>
         </tr>
     </thead>
     <tbody>
