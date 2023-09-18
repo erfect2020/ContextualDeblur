@@ -108,16 +108,19 @@ Harbin Institute of Technology, Harbin 150001, China. Electronic Information Sch
             <td>30.253</td><td>0.883</td><td><u>0.147</u></td><td><strong>62.648</strong></td><td><strong>0.978</strong></td><td>0.622</td>
         </tr>
         <tr>
-            <td>NRKNet</td>
-            <td>25.345</td><td>0.775</td><td>0.290</td><td>57.642</td><td>0.906</td><td>0.523</td>
-            <td>23.918</td><td>0.721</td><td>0.382</td><td>28.531</td><td>0.900</td><td>0.517</td>
-            <td>28.664</td><td>0.852</td><td>0.165</td><td>60.221</td><td>0.972</td><td>0.607</td>
+            <td>NRKNet </td>
+            <td><u>26.109</u></td><td><u>0.810</u></td><td><u>0.236</u></td><td><u>59.118</u></td><td><u>0.925</u></td><td><u>0.546</u></td>
+            <td><strong>25.148</strong></td><td><u>0.768</u></td><td>0.361</td><td>30.237</td><td><u>0.921</u></td><td><u>0.561</u></td>
+            <td><u>30.481</u></td><td><u>0.884</u></td><td><u>0.147</u></td><td>61.738</td><td>0.976</td><td>0.620</td>
         </tr>
         <tr>
             <td>Ours</td>
-            <td>25.192</td><td>0.771</td><td>0.279</td><td>56.992</td><td>0.902</td><td>0.520</td>
-            <td>23.740</td><td>0.710</td><td>0.399</td><td>27.765</td><td>0.897</td><td>0.509</td>
-            <td>28.815</td><td>0.847</td><td>0.172</td><td>60.005</td><td>0.971</td><td>0.604</td>
+            <td><strong>26.114</strong></td><td><strong>0.814</strong></td><td><strong>0.201</strong></td><td><strong>60.768</strong></td>
+            <td><strong>0.934</strong></td><td><strong>0.557</strong></td>
+            <td><u>25.141</u></td><td><strong>0.769</strong></td><td><strong>0.295</strong></td><td><strong>34.866</strong></td>
+            <td><strong>0.932</strong></td><td><strong>0.577</strong></td>
+            <td><strong>30.508</strong></td><td><strong>0.892</strong></td><td><strong>0.144</strong></td><td><u>62.164</u></td>
+            <td><u>0.977</u></td><td><strong>0.625</strong></td>
         </tr>
 
     </tbody>
