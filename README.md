@@ -122,7 +122,6 @@ Harbin Institute of Technology, Harbin 150001, China. Electronic Information Sch
             <td><strong>30.508</strong></td><td><strong>0.892</strong></td><td><strong>0.144</strong></td><td><u>62.164</u></td>
             <td><u>0.977</u></td><td><strong>0.625</strong></td>
         </tr>
-
     </tbody>
 </table>
 
