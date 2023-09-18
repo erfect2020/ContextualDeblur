@@ -29,7 +29,7 @@ Harbin Institute of Technology, Harbin 150001, China. Electronic Information Sch
 ### Quantitative Result
 
 <table border="1" cellspacing="0" cellpadding="2">
-    <caption>Defocus deblurring comparisons on the DPDD test dataset, RealDOF dataset, and LFDOF dataset. Best and second best results are <strong>highlighted</strong> and <u>underlined</u>.</caption>
+    <caption>Defocus deblurring comparisons on the DPDD test dataset, RealDOF dataset, and LFDOF dataset. Best and second best results are <strong>highlighted</strong> and <em>underlined</em>.</caption>
     <thead>
         <tr>
             <th rowspan="2">Method</th>
@@ -60,7 +60,7 @@ Harbin Institute of Technology, Harbin 150001, China. Electronic Information Sch
             <td>AIFNet</td>
             <td>24.213</td><td>0.742</td><td>0.447</td><td>46.764</td><td>0.864</td><td>0.502</td>
             <td>23.093</td><td>0.680</td><td>0.557</td><td>22.502</td><td>0.860</td><td>0.461</td>
-            <td>29.677</td><td><u>0.884</u></td><td>0.202</td><td>61.481</td><td>0.976</td><td><u>0.624</u></td>
+            <td>29.677</td><td><em>0.884</em></td><td>0.202</td><td>61.481</td><td>0.976</td><td><em>0.624</em></td>
         </tr>
         <tr>
             <td>MDP</td>
@@ -89,23 +89,23 @@ Harbin Institute of Technology, Harbin 150001, China. Electronic Information Sch
         <tr>
             <td>DRBNet</td>
             <td>25.725</td><td>0.791</td><td>0.240</td><td>58.851</td><td>0.918</td><td>0.546</td>
-            <td>24.463</td><td>0.751</td><td>0.349</td><td><u>32.483</u></td><td>0.911</td><td>0.559</td>
-            <td>30.253</td><td>0.883</td><td><u>0.147</u></td><td><strong>62.648</strong></td><td><strong>0.978</strong></td><td>0.622</td>
+            <td>24.463</td><td>0.751</td><td>0.349</td><td><em>32.483</em></td><td>0.911</td><td>0.559</td>
+            <td>30.253</td><td>0.883</td><td><em>0.147</em></td><td><strong>62.648</strong></td><td><strong>0.978</strong></td><td>0.622</td>
         </tr>
         <tr>
             <td>NRKNet </td>
-            <td><u>26.109</u></td><td><u>0.810</u></td><td><u>0.236</u></td><td><u>59.118</u></td><td><u>0.925</u></td><td><u>0.546</u></td>
-            <td><strong>25.148</strong></td><td><u>0.768</u></td><td>0.361</td><td>30.237</td><td><u>0.921</u></td><td><u>0.561</u></td>
-            <td><u>30.481</u></td><td><u>0.884</u></td><td><u>0.147</u></td><td>61.738</td><td>0.976</td><td>0.620</td>
+            <td><em>26.109</em></td><td><em>0.810</em></td><td><em>0.236</em></td><td><em>59.118</em></td><td><em>0.925</em></td><td><em>0.546</em></td>
+            <td><strong>25.148</strong></td><td><em>0.768</em></td><td>0.361</td><td>30.237</td><td><em>0.921</em></td><td><em>0.561</em></td>
+            <td><em>30.481</em></td><td><em>0.884</em></td><td><em>0.147</em></td><td>61.738</td><td>0.976</td><td>0.620</td>
         </tr>
         <tr>
             <td>Ours</td>
             <td><strong>26.114</strong></td><td><strong>0.814</strong></td><td><strong>0.201</strong></td><td><strong>60.768</strong></td>
             <td><strong>0.934</strong></td><td><strong>0.557</strong></td>
-            <td><u>25.141</u></td><td><strong>0.769</strong></td><td><strong>0.295</strong></td><td><strong>34.866</strong></td>
+            <td><em>25.141</em></td><td><strong>0.769</strong></td><td><strong>0.295</strong></td><td><strong>34.866</strong></td>
             <td><strong>0.932</strong></td><td><strong>0.577</strong></td>
-            <td><strong>30.508</strong></td><td><strong>0.892</strong></td><td><strong>0.144</strong></td><td><u>62.164</u></td>
-            <td><u>0.977</u></td><td><strong>0.625</strong></td>
+            <td><strong>30.508</strong></td><td><strong>0.892</strong></td><td><strong>0.144</strong></td><td><em>62.164</em></td>
+            <td><em>0.977</em></td><td><strong>0.625</strong></td>
         </tr>
     </tbody>
 </table>
