@@ -15,6 +15,12 @@ Harbin Institute of Technology, Harbin 150001, China. Electronic Information Sch
   <img width="640" alt="image" src="https://github.com/erfect2020/ContextualDeblur/assets/94505384/c188950f-d71d-4d55-83ad-5ebb348652e7">
 </p>
 
+<p>
+<img src="https://latex.codecogs.com/png.image?1+sin^2(x)" />
+  Given a blurred image <img src="https://latex.codecogs.com/png.image?\bm{x} \in \mathbb{R}^{C\times H \times W}" />, we first tokenize the image into <img src="https://latex.codecogs.com/png.image?\bm{h} \in \mathbb{R}^{N\times D}" />. The primary feature encoder takes the tokenized ${h}$ as input and learns primary representations ${h_{b0}} \in \mathbb{R}^{N\times D}$ that preserve as much detail as possible from ${h}$. In addition to preserving input completeness, the ${h_{b0}}$ also exhibits some degree of discrimination against blur. Subsequently, the contextual encoder employs the ${h_{b0}}$ to learn the sharp and abstract representations ${h_{s}}$, which eliminate the irrelevant blurry features. The decoder then combines the primary and abstract representations ${h_{b0}}$ and ${h_{s}}$ as inputs to reconstruct the deblurred image ${\hat{x}} \in \mathbb{R}^{C\times H \times W}$.
+</p>
+
+
 
 
 ## 📊Results
