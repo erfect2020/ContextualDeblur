@@ -13,7 +13,7 @@ Harbin Institute of Technology, Harbin 150001, China. Electronic Information Sch
 
 ### 📚The framework the proposed method
 <p align="center">
-  <img width="876" alt="image" src="https://github.com/erfect2020/ContextualDeblur/assets/94505384/c188950f-d71d-4d55-83ad-5ebb348652e7">
+  <img width="640" alt="image" src="https://github.com/erfect2020/ContextualDeblur/assets/94505384/c188950f-d71d-4d55-83ad-5ebb348652e7">
 </p>
 
 
