@@ -1,0 +1,30 @@
+name: LFDOF-defocusv1
+use_tb_logger: false
+model: Unify # reconstruct Defocus network.
+
+dataset:
+  test:
+    name: test
+    dataroot:  /home/lpw/Downloads/deblur/LFDOF/test_data
+    batch_size: 1
+    workers: 1
+    left_name: input
+    right_name: input
+    combine_name: ground_truth
+    blur_name: input
+
+network_G:
+  in_nc: 3
+  block_num: 2
+  init: xavier
+  hidden_channels: 128
+  K: 4
+
+path:
+  pretrain_model_G: ~
+  strict_load: true
+  resume_state: //pretrained_clipvit_defocus.pth
+
+logger:
+  print_freq: 10
+  save_checkpoint_freq: 20 #!!float 5e3
