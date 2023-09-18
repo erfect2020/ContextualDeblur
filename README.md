@@ -3,5 +3,5 @@ Decoupling Image Deblurring into Twofold: A Hierarchical Model for Defocus Deblu
 
 # Evaluation
 ```
-python disttest.py -opt options/test/
+python disttest.py -opt options/test/Unify_DDPD_Test.yaml
 ```
