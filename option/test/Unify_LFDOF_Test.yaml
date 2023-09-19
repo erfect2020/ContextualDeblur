@@ -5,7 +5,7 @@ model: Unify # reconstruct Defocus network.
 dataset:
   test:
     name: test
-    dataroot:  /home/lpw/Downloads/deblur/LFDOF/test_data
+    dataroot:  /test_data
     batch_size: 1
     workers: 1
     left_name: input
@@ -23,7 +23,7 @@ network_G:
 path:
   pretrain_model_G: ~
   strict_load: true
-  resume_state: //pretrained_clipvit_defocus.pth
+  resume_state: /pretrained_clipvit_defocus.pth
 
 logger:
   print_freq: 10
