@@ -5,7 +5,7 @@ model: Unify # reconstruct Defocus network.
 dataset:
   test:
     name: test
-    dataroot:  /home/lpw/Downloads/deblur/RealDOF
+    dataroot:  /deblur/RealDOF
     batch_size: 1
     workers: 1
     left_name: source
@@ -23,7 +23,7 @@ network_G:
 path:
   pretrain_model_G: ~
   strict_load: true
-  resume_state: /JEDeblur_DEBUG/pretrained_clipvit_defocusv1.pth 
+  resume_state: /pretrained_clipvit_defocusv1.pth 
 
 logger:
   print_freq: 10
