@@ -23,7 +23,7 @@ network_G:
 path:
   pretrain_model_G: ~
   strict_load: true
-  resume_state: /JEDeblur_DEBUG/pretrained_clipvit_defocusv1.pth
+  resume_state: /pretrained_clipvit_defocusv1.pth
 
 logger:
   print_freq: 10
