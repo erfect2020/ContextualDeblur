@@ -94,8 +94,6 @@ class TrainDataset(Dataset):
             b_prompts = ""
         except:
             print('cureent exception', c_img, c_img_type)
-            # time.sleep(0.5)
-            # return None
 
         try:
             l_img = torch.tensor(l_img / 255.).float().permute(2, 0, 1)
@@ -110,7 +108,6 @@ class TrainDataset(Dataset):
             r_img = self.default_rimg
             b_img = self.default_bimg
             gt_img = self.default_gtimg
-            # return None
 
         try:
             combine_im = self.data_augment(torch.cat((l_img, r_img, b_img, gt_img), dim=0))
@@ -118,7 +115,6 @@ class TrainDataset(Dataset):
             prompt_image = self.preprocess(b_img)
         except:
             print("process wrong!")
-            # return None
 
         return l_img, r_img, gt_img, b_img, { 'img':prompt_image}
 
