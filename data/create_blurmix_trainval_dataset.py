@@ -98,12 +98,10 @@ class TrainDataset(Dataset):
             # return None
 
         try:
-            if blur_type == 'defocus-single':
-
-                l_img = torch.tensor(l_img / 255.).float().permute(2, 0, 1)
-                r_img = torch.tensor(r_img / 255.).float().permute(2, 0, 1)
-                gt_img = torch.tensor(gt_img / 255.).float().permute(2, 0, 1)
-                b_img = torch.tensor(b_img / 255.).float().permute(2, 0, 1)
+            l_img = torch.tensor(l_img / 255.).float().permute(2, 0, 1)
+            r_img = torch.tensor(r_img / 255.).float().permute(2, 0, 1)
+            gt_img = torch.tensor(gt_img / 255.).float().permute(2, 0, 1)
+            b_img = torch.tensor(b_img / 255.).float().permute(2, 0, 1)
         except Exception as e:
             print("Current exception", c_img, c_img_type)
             time.sleep(0.5)
@@ -187,26 +185,4 @@ class ValDataset(Dataset):
             b_prompts = self.default_prompts
             # return None
         return l_img, r_img, gt_img, b_img, {'text':b_prompts}, os.path.basename(c_img_name).split('.')
-
-
-import numpy as np
-
-def mixup_data(x, y, z, b, alpha=1.0, use_cuda=True):
-    '''Returns mixed inputs, pairs of targets, and lambda'''
-    if alpha > 0:
-        lam = np.random.beta(alpha, alpha)
-    else:
-        lam = 1
-
-    batch_size = x.size()[0]
-    if use_cuda:
-        index = torch.randperm(batch_size).cuda()
-    else:
-        index = torch.randperm(batch_size)
-
-    mixed_x = lam * x + (1 - lam) * x[index, :]
-    mixed_y = lam * y + (1- lam) * y[index, :]
-    mixed_z = lam * z + (1 - lam) * z[index, :]
-    mixed_b = lam * b + (1 - lam) * b[index, :]
-    return mixed_x, mixed_y, mixed_z, mixed_b
 
