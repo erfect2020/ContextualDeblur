@@ -24,10 +24,6 @@ class TrainDataset(Dataset):
                 # RandomRotation()
             ]
         )
-        self.preprocess = Compose(
-            [   Resize(224),
-                Normalize((0.48145466, 0.4578275, 0.40821073), (0.26862954, 0.26130258, 0.27577711))]
-        )
 
         trainpairs_forreading = str(trainopt['trainpairs'])
         if not os.path.exists(trainpairs_forreading):
@@ -71,16 +67,6 @@ class TrainDataset(Dataset):
         random_h = 1 if h_start <= 1 else torch.randint(low=1, high=h_start, size=(1, 1)).item()
         return random_w, random_h
 
-    def set_dafault_img(self):
-        l_img = "xxx/CanonDeblur/dd_dp_dataset_canon_patch/train_l/source/00000.png"
-        r_img = "xxx/CanonDeblur/dd_dp_dataset_canon_patch/train_r/source/00000.png"
-        b_img = "xxx/CanonDeblur/dd_dp_dataset_canon_patch/train_c/source/00000.png"
-        c_img = "xxx/CanonDeblur/dd_dp_dataset_canon_patch/train_c/target/00000.png"
-        self.default_limg = torch.tensor(cv2.imread(l_img,-1)/ 65535.).float().permute(2, 0, 1)
-        self.default_rimg = torch.tensor(cv2.imread(r_img,-1)/ 65535.).float().permute(2, 0, 1)
-        self.default_bimg = torch.tensor(cv2.imread(b_img,-1)/ 65535.).float().permute(2, 0, 1)
-        self.default_gtimg = torch.tensor(cv2.imread(c_img,-1)/ 65535.).float().permute(2, 0, 1)
-
     def __getitem__(self, index):
         c_img_type, (blur_type, l_img, r_img, b_img, c_img) = self.uegt_imgs[index]
         # print(c_img, l_img, r_img)
@@ -91,23 +77,13 @@ class TrainDataset(Dataset):
             gt_img = cv2.imread(c_img, cv2.IMREAD_COLOR)
             b_img = cv2.imread(b_img, cv2.IMREAD_COLOR)
 
-            b_prompts = ""
-        except:
-            print('cureent exception', c_img, c_img_type)
-
-        try:
             l_img = torch.tensor(l_img / 255.).float().permute(2, 0, 1)
             r_img = torch.tensor(r_img / 255.).float().permute(2, 0, 1)
             gt_img = torch.tensor(gt_img / 255.).float().permute(2, 0, 1)
             b_img = torch.tensor(b_img / 255.).float().permute(2, 0, 1)
         except Exception as e:
             print("Current exception", c_img, c_img_type)
-            time.sleep(0.5)
             print("error",e)
-            l_img = self.default_limg
-            r_img = self.default_rimg
-            b_img = self.default_bimg
-            gt_img = self.default_gtimg
 
         try:
             combine_im = self.data_augment(torch.cat((l_img, r_img, b_img, gt_img), dim=0))
@@ -148,37 +124,20 @@ class ValDataset(Dataset):
     def __len__(self):
         return len(self.uegt_imgs)
 
-    def set_dafault_img(self):
-        c_img, (l_img, r_img, b_img) = self.uegt_imgs[0]
-        self.default_limg = torch.tensor(cv2.imread(l_img,-1)/ 65535.).float().permute(2, 0, 1)
-        self.default_rimg = torch.tensor(cv2.imread(r_img,-1)/ 65535.).float().permute(2, 0, 1)
-        self.default_bimg = torch.tensor(cv2.imread(b_img,-1)/ 65535.).float().permute(2, 0, 1)
-        self.default_gtimg = torch.tensor(cv2.imread(c_img,-1)/ 65535.).float().permute(2, 0, 1)
-        self.default_prompts = 'The dual-pixel image with defocus blur'
-
     def __getitem__(self, index):
         c_img, (l_img, r_img, b_img) = self.uegt_imgs[index]
-        # print(c_img, l_img, r_img)
         c_img_name = c_img
 
-        try:
+        l_img = cv2.imread(l_img, cv2.IMREAD_COLOR)
+        r_img = cv2.imread(r_img, cv2.IMREAD_COLOR)
+        gt_img = cv2.imread(c_img, cv2.IMREAD_COLOR)
+        b_img = cv2.imread(b_img, cv2.IMREAD_COLOR)
 
-            l_img = cv2.imread(l_img, cv2.IMREAD_COLOR)
-            r_img = cv2.imread(r_img, cv2.IMREAD_COLOR)
-            gt_img = cv2.imread(c_img, cv2.IMREAD_COLOR)
-            b_img = cv2.imread(b_img, cv2.IMREAD_COLOR)
-
-            l_img = torch.tensor(l_img / 255.).float().permute(2, 0, 1)
-            r_img = torch.tensor(r_img / 255.).float().permute(2, 0, 1)
-            gt_img = torch.tensor(gt_img / 255.).float().permute(2, 0, 1)
-            b_img = torch.tensor(b_img / 255.).float().permute(2, 0, 1)
+        l_img = torch.tensor(l_img / 255.).float().permute(2, 0, 1)
+        r_img = torch.tensor(r_img / 255.).float().permute(2, 0, 1)
+        gt_img = torch.tensor(gt_img / 255.).float().permute(2, 0, 1)
+        b_img = torch.tensor(b_img / 255.).float().permute(2, 0, 1)
 
 
-            b_prompts = 'The dual-pixel image with defocus blur'
-        except:
-            print("trhow a except")
-            l_img, r_img, gt_img, b_img = self.default_limg, self.default_rimg, self.default_gtimg, self.default_bimg
-            b_prompts = self.default_prompts
-            # return None
-        return l_img, r_img, gt_img, b_img, {'text':b_prompts}, os.path.basename(c_img_name).split('.')
+        return l_img, r_img, gt_img, b_img, os.path.basename(c_img_name).split('.')
 
