@@ -11,7 +11,6 @@ def off_diagonal(x):
     return x.flatten()[:-1].view(n - 1, n + 1)[:, 1:].flatten()
 
 
-
 class FullGatherLayer(torch.autograd.Function):
     """
     Gather tensors from all process and support backward propagation
@@ -83,16 +82,6 @@ class SelfLearningLoss(nn.Module):
         return recons_loss, loss, (self.sim_coeff * repr_loss, self.std_coeff * std_loss, self.cov_coeff * cov_loss)
 
 
-class fftLoss(nn.Module):
-    def __init__(self):
-        super(fftLoss, self).__init__()
-
-    def forward(self, x, y):
-        diff = torch.fft.fft2(x) - torch.fft.fft2(y)
-        loss = torch.mean(abs(diff))
-        return loss
-
-
 class ReconstructLoss(nn.Module):
     def __init__(self, opt):
         super(ReconstructLoss, self).__init__()
@@ -101,13 +90,12 @@ class ReconstructLoss(nn.Module):
         self.bce_loss = nn.BCEWithLogitsLoss()
         self.self_learning = SelfLearningLoss(opt['batch_size'])
 
-    def forward(self, modelparameter, clsblur_embed, clsdeblur_embed, deblur_embed, guidance_embed, deblur_z, guidance_z, recover_img, gt, recover_list, gt_list, recover_mae, guidance_mae):
+    def forward(self, clsblur_embed, clsdeblur_embed, deblur_embed, guidance_embed, deblur_z, guidance_z, recover_img, gt, recover_list, gt_list, recover_mae, guidance_mae):
         losses = {}
         loss_l1 = self.l1_loss(recover_img, gt)
 
         recons_loss, loss_self, (repr_loss, std_loss, cov_loss) = self.self_learning(deblur_embed, guidance_embed, deblur_z, guidance_z)
 
-        recons_loss = recons_loss #* 1e1 #1e1
         loss_self = loss_self * 1e-1
 
         blur_target = torch.zeros(clsblur_embed.shape[0]).to(clsblur_embed.device)
@@ -117,7 +105,7 @@ class ReconstructLoss(nn.Module):
         loss_cls = loss_cls * 3e-1
         loss_vicreg = recons_loss + loss_cls
 
-        loss_vicreg = loss_vicreg * 1 #* 0.02
+        loss_vicreg = loss_vicreg * 1 
 
         losses["self_learning/total"] = loss_vicreg
         losses["self_learning/recons"] = recons_loss
@@ -126,15 +114,12 @@ class ReconstructLoss(nn.Module):
         losses["vicreg/repr"] = repr_loss
         losses["vicreg/std"] = std_loss
         losses["vicreg/cov"] = cov_loss
-        l1_reg = modelparameter.norm(p=1) * 1e-4
-        losses["l1_reg"] = l1_reg
 
-        loss_vicreg = 0.2 * loss_vicreg #* 1e-1 * 1e-1
+        loss_vicreg = 0.2 * loss_vicreg 
 
         #
         losses["total_loss/final_loss"] = loss_l1 + loss_vicreg
         losses["total_loss/l1"] = loss_l1
-        losses["total_loss/l1_reg"] = l1_reg
         losses["total_loss/vicreg"] = loss_vicreg
 
         return losses
