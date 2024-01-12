@@ -81,12 +81,30 @@ class SelfLearningLoss(nn.Module):
         return recons_loss, loss, (self.sim_coeff * repr_loss, self.std_coeff * std_loss, self.cov_coeff * cov_loss)
 
 
+class GeneralizedCrossEntropyLoss(torch.nn.Module):
+    def __init__(self, q=0.7):
+        super().__init__()
+        self.q = q
+
+    def forward(self, logits, targets):
+        # ?logits?????
+        probabilities = torch.sigmoid(logits)
+
+        # ?????(0, 1)???
+        probabilities = torch.clamp(probabilities, 1e-7, 1 - 1e-7)
+
+        # ??GCE??
+        loss = (1 - torch.pow(targets * probabilities + (1 - targets) * (1 - probabilities), self.q)) / self.q
+        return torch.mean(loss)
+        
+
 class ReconstructLoss(nn.Module):
     def __init__(self, opt):
         super(ReconstructLoss, self).__init__()
         self.l1_loss = CharbonnierLoss()
         self.mse_loss = MSELoss(reduction='mean')
         self.bce_loss = nn.BCEWithLogitsLoss()
+        # self.bce_loss = GeneralizedCrossEntropyLoss() #robust to noise label.
         self.self_learning = SelfLearningLoss(opt['batch_size'])
 
     def forward(self, clsblur_embed, clsdeblur_embed, deblur_embed, guidance_embed, deblur_z, guidance_z, recover_img, gt, recover_list, gt_list, recover_mae, guidance_mae):
