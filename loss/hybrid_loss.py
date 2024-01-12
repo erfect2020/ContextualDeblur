@@ -56,8 +56,7 @@ class SelfLearningLoss(nn.Module):
 
     def forward(self, x, y, x_z, y_z):
         repr_loss = self.mse_loss(x_z, y_z)
-        recons_loss = self.l1_loss(x, y)
-        # recons_loss = (1 - self.cos_loss(x,y)).mean()
+        recons_loss = (1 - self.cos_loss(x,y)).mean()
 
         x_z = torch.cat(FullGatherLayer.apply(x_z), dim=0)
         y_z = torch.cat(FullGatherLayer.apply(y_z), dim=0)
