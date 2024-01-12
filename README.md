@@ -108,7 +108,7 @@ Given a blurred image $x \in \mathbb{R}^{C\times H \times W}$, we first tokenize
         <tr>
             <td>Restormer[9] </td>
             <td><em>25.980</em></td><td><em>0.811</em></td><td><em>0.236</em></td><td><em>58.826</em></td><td><em>0.922</em></td><td><em>0.552</em></td>
-            <td><strong>24.284</strong></td><td><em>0.732</em></td><td>0.346</td><td>31.059</td><td><em>0.921</em></td><td><em>0.528</em></td>
+            <td>24.284</td><td><em>0.732</em></td><td>0.346</td><td>31.059</td><td><em>0.921</em></td><td><em>0.528</em></td>
             <td><em>30.026</em></td><td><em>0.883</em></td><td><em>0.145</em></td><td>62.029</td><td>0.973</td><td>0.615</td>
         </tr>
         <tr>
