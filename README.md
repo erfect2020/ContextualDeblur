@@ -106,6 +106,12 @@ Given a blurred image $x \in \mathbb{R}^{C\times H \times W}$, we first tokenize
             <td>30.253</td><td>0.883</td><td><em>0.147</em></td><td><strong>62.648</strong></td><td><strong>0.978</strong></td><td>0.622</td>
         </tr>
         <tr>
+            <td>Restormer[9] </td>
+            <td><em>25.980</em></td><td><em>0.811</em></td><td><em>0.236</em></td><td><em>58.826</em></td><td><em>0.922</em></td><td><em>0.552</em></td>
+            <td><strong>24.284</strong></td><td><em>0.732</em></td><td>0.346</td><td>31.059</td><td><em>0.921</em></td><td><em>0.528</em></td>
+            <td><em>30.026</em></td><td><em>0.883</em></td><td><em>0.145</em></td><td>62.029</td><td>0.973</td><td>0.615</td>
+        </tr>
+        <tr>
             <td>NRKNet[8] </td>
             <td><em>26.109</em></td><td><em>0.810</em></td><td><em>0.236</em></td><td><em>59.118</em></td><td><em>0.925</em></td><td><em>0.546</em></td>
             <td><strong>25.148</strong></td><td><em>0.768</em></td><td>0.361</td><td>30.237</td><td><em>0.921</em></td><td><em>0.561</em></td>
@@ -138,3 +144,4 @@ python disttest.py -opt options/test/Unify_DDPD_Test.yaml
 [7] L. Ruan, B. Chen, J. Li, and M. Lam, “Learning to deblur using light field generated and real defocus images,” in Proceedings of the
 IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2022, pp. 16 304–16 313.[\[code](https://github.com/lingyanruan/DRBNet),[paper](https://arxiv.org/pdf/2204.00367.pdf)\]  
 [8] Y. Quan, Z. Wu, and H. Ji, “Neumann network with recursive kernels for single image defocus deblurring,” in Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2023, pp. 5754–5763.[\[code](https://github.com/csZcWu/NRKNet),[paper](https://openaccess.thecvf.com/content/CVPR2023/html/Quan_Neumann_Network_With_Recursive_Kernels_for_Single_Image_Defocus_Deblurring_CVPR_2023_paper.html)\]
+[9] Zamir, S. W., Arora, A., Khan, S., Hayat, M., Khan, F. S., & Yang, M. H., “Restormer: Efficient Transformer for High-Resolution Image Restoration,” in Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2022, pp. 5728-5739.[\[code](https://github.com/swz30/Restormer),[paper](https://openaccess.thecvf.com/content/CVPR2022/papers/Zamir_Restormer_Efficient_Transformer_for_High-Resolution_Image_Restoration_CVPR_2022_paper.pdf)\]
