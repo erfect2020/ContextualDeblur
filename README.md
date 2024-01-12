@@ -103,7 +103,7 @@ Given a blurred image $x \in \mathbb{R}^{C\times H \times W}$, we first tokenize
             <td>DRBNet[7] </td>
             <td>25.725</td><td>0.791</td><td>0.240</td><td>58.851</td><td>0.918</td><td>0.546</td>
             <td>24.463</td><td>0.751</td><td>0.349</td><td><em>32.483</em></td><td>0.911</td><td>0.559</td>
-            <td>30.253</td><td>0.883</td><td><em>0.147</em></td><td><strong>62.648</strong></td><td><strong>0.978</strong></td><td>0.622</td>
+            <td>30.253</td><td>0.883</td><td>0.147</td><td><strong>62.648</strong></td><td><strong>0.978</strong></td><td>0.622</td>
         </tr>
         <tr>
             <td>Restormer[9] </td>
