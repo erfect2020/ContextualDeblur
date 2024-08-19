@@ -20,8 +20,6 @@ class TrainDataset(Dataset):
             [
                 RandomCrop(self.image_size),
                 RandomHorizontalFlip(),
-                # RandomVerticalFlip()
-                # RandomRotation()
             ]
         )
 
@@ -69,16 +67,10 @@ class TrainDataset(Dataset):
 
     def __getitem__(self, index):
         c_img_type, (blur_type, l_img, r_img, b_img, c_img) = self.uegt_imgs[index]
-        # print(c_img, l_img, r_img)
 
         try:
-            l_img = cv2.imread(l_img, cv2.IMREAD_COLOR) #cv2.IMREAD_COLOR
-            r_img = cv2.imread(r_img, cv2.IMREAD_COLOR)
             gt_img = cv2.imread(c_img, cv2.IMREAD_COLOR)
             b_img = cv2.imread(b_img, cv2.IMREAD_COLOR)
-
-            l_img = torch.tensor(l_img / 255.).float().permute(2, 0, 1)
-            r_img = torch.tensor(r_img / 255.).float().permute(2, 0, 1)
             gt_img = torch.tensor(gt_img / 255.).float().permute(2, 0, 1)
             b_img = torch.tensor(b_img / 255.).float().permute(2, 0, 1)
         except Exception as e:
@@ -86,21 +78,21 @@ class TrainDataset(Dataset):
             print("error",e)
 
         try:
-            combine_im = self.data_augment(torch.cat((l_img, r_img, b_img, gt_img), dim=0))
-            l_img, r_img, b_img, gt_img = combine_im[:3,:,:], combine_im[3:6,:,:], combine_im[6:9,:,:], combine_im[9:,:,:]
+            combine_im = self.data_augment(torch.cat(( b_img, gt_img), dim=0))
+            b_img, gt_img = combine_im[:3,:,:], combine_im[3:6,:,:]
             prompt_image = self.preprocess(b_img)
         except:
             print("process wrong!")
 
-        return l_img, r_img, gt_img, b_img, { 'img':prompt_image}
+        return gt_img, b_img, { 'img':prompt_image}
 
 
 class ValDataset(Dataset):
     def __init__(self, valopt):
         super(ValDataset, self).__init__()
         path = valopt['dataroot']
-        left_imgs = os.path.join(os.path.expanduser(path), valopt["left_name"])
-        right_imgs = os.path.join(os.path.expanduser(path), valopt["right_name"])
+        left_imgs = os.path.join(os.path.expanduser(path), valopt["blur_name"])
+        right_imgs = os.path.join(os.path.expanduser(path), valopt["blur_name"])
         combine_imgs = os.path.join(os.path.expanduser(path), valopt["combine_name"])
         blur_imgs = os.path.join(os.path.expanduser(path), valopt["blur_name"])
 
@@ -128,16 +120,12 @@ class ValDataset(Dataset):
         c_img, (l_img, r_img, b_img) = self.uegt_imgs[index]
         c_img_name = c_img
 
-        l_img = cv2.imread(l_img, cv2.IMREAD_COLOR)
-        r_img = cv2.imread(r_img, cv2.IMREAD_COLOR)
         gt_img = cv2.imread(c_img, cv2.IMREAD_COLOR)
         b_img = cv2.imread(b_img, cv2.IMREAD_COLOR)
 
-        l_img = torch.tensor(l_img / 255.).float().permute(2, 0, 1)
-        r_img = torch.tensor(r_img / 255.).float().permute(2, 0, 1)
         gt_img = torch.tensor(gt_img / 255.).float().permute(2, 0, 1)
         b_img = torch.tensor(b_img / 255.).float().permute(2, 0, 1)
 
 
-        return l_img, r_img, gt_img, b_img, os.path.basename(c_img_name).split('.')
+        return gt_img, b_img, os.path.basename(c_img_name).split('.')
 
