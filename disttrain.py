@@ -80,17 +80,6 @@ def corresponding_load(pre_name, state_dict):
             sub_statedict[k.replace(pre_name, "")] = v
     return sub_statedict
 
-pretrained_ckpt = './pretrained_clipvit_defocus.pth'
-pretrained_ckpt = os.path.expanduser(pretrained_ckpt)
-checkpoint = torch.load(pretrained_ckpt, map_location='cpu')
-print("Load init checkpoint from: %s" % pretrained_ckpt)
-checkpoint = checkpoint['state_dict']
-checkpoint = corresponding_load('module.', checkpoint)
-model.load_state_dict(checkpoint, strict=False)
-
-
-
-
 optimizer = AdamW(model.parameters(), betas=(opt['train']['beta1'], opt['train']['beta2']), weight_decay=1e-2,
                  lr=opt['train']['lr'])
 
