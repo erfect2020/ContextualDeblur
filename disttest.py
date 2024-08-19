@@ -75,9 +75,6 @@ model.eval()
 for test_data in tqdm(test_loader):
     with torch.no_grad():
         l_img, r_img, gt, b_img, root_name = test_data
-        # b_img, gt, root_name = test_data
-        # continue
-        # continue
         gt = gt.cuda()
 
         l_img = l_img.cuda()
