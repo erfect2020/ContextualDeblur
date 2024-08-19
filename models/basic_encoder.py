@@ -3,7 +3,7 @@ import os.path
 import torch
 import torch.nn as nn
 from models.dual_model_mae import mae_vit_base_patch16
-from models.tinymim import tinymim_vit_tiny_patch16, tinymim_vit_tiny_patch8, tinymim_vit_small_patch16
+from models.tinymim import tinymim_vit_tiny_patch16
 from utils.pos_embed import interpolate_pos_embed, interpolate_pos_encoding
 from torchvision.transforms.functional import normalize
 
