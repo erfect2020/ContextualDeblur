@@ -50,15 +50,11 @@ class TestDataset(Dataset):
         _, (l_img, r_img, b_img, c_img) = self.uegt_imgs[index]
         c_img_name = b_img
 
-        l_img = cv2.imread(l_img, cv2.IMREAD_COLOR)
-        r_img = cv2.imread(r_img, cv2.IMREAD_COLOR)
         gt_img = cv2.imread(c_img, cv2.IMREAD_COLOR)
         b_img = cv2.imread(b_img, cv2.IMREAD_COLOR)
 
 
-        l_img = torch.tensor(l_img / 255.0).float().permute(2, 0, 1)
-        r_img = torch.tensor(r_img / 255.0).float().permute(2, 0, 1)
         gt_img = torch.tensor(gt_img / 255.0).float().permute(2, 0, 1)
         b_img = torch.tensor(b_img / 255.).float().permute(2, 0, 1)
 
-        return l_img, r_img, gt_img, b_img, os.path.basename(c_img_name).split('.')
+        return gt_img, b_img, os.path.basename(c_img_name).split('.')
