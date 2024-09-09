@@ -6,6 +6,8 @@
 
 Harbin Institute of Technology, Harbin 150001, China. Electronic Information School, Wuhan University, Wuhan 430072, China.
 
+[Paper](https://ieeexplore.ieee.org/document/10637737)
+
 </div>
 
 > Defocus deblurring, especially when facing spatially varying blur due to scene depth, remains a challenging problem. A more comprehensive understanding of the scene can lead to spatially adaptive deblurring techniques. While recent advancements in network architectures have predominantly addressed high-frequency details, the importance of scene understanding remains paramount. A crucial aspect of this understanding is *contextual information*. Contextual information captures vital high-level semantic cues essential for grasping the context and meaning of the input image. Beyond just providing cues, contextual information relates to object outlines and helps identify blurred regions in the image. Recognizing and effectively capitalizing on these cues can lead to substantial improvements in image recovery. With this foundation, we propose a novel method that integrates spatial details and contextual information, offering significant advancements in defocus deblurring. Consequently, we introduce a novel hierarchical model, built upon the capabilities of the Vision Transformer (ViT). This model seamlessly encodes both spatial details and contextual information, yielding a robust solution. In particular, our approach decouples the complex deblurring task into two distinct subtasks. The first is handled by a primary feature encoder that transforms blurred images into detailed representations. The second involves a contextual encoder that produces abstract and sharp representations from the primary ones. The combined outputs from these encoders are then merged by a decoder to reproduce the sharp target image. Our evaluation across multiple defocus deblurring datasets demonstrates that the proposed method achieves compelling performance. 
@@ -134,6 +136,23 @@ Given a blurred image $x \in \mathbb{R}^{C\times H \times W}$, we first tokenize
 ```
 python disttest.py -opt options/test/Unify_DDPD_Test.yaml
 ```
+
+
+
+If this repo help you, please cite us:
+```
+@article{liang2024vitdeblur,
+  title={Decoupling Image Deblurring Into Twofold: A Hierarchical Model for Defocus Deblurring},
+  author={Liang, Pengwei and Jiang, Junjun and Liu, Xianming and Ma, Jiayi},
+  journal={IEEE Transactions on Computational Imaging},
+  year={2024},
+  pages={1207-1220},
+  volume={10},
+  publisher={IEEE}
+}
+```
+
+
 ## Reference
 [1] A. Abuolaim and M. S. Brown, “Defocus deblurring using dual-pixel data,” in Proceedings of the European Conference on Computer Vision, 2020. [\[code](https://github.com/Abdullah-Abuolaim/defocus-deblurring-dual-pixel),[paper](https://www.eecs.yorku.ca/~abuolaim/eccv_2020_dp_defocus_deblurring/)\]  
 [2] L. Ruan, B. Chen, J. Li, and M.-L. Lam, “Aifnet: All-in-focus image restoration network using a light field-based dataset,” IEEE Transactions on Computational Imaging, vol. 7, pp. 675–688, 2021.[\[code](https://github.com/binorchen/AIFNET),[paper](https://ieeexplore.ieee.org/document/9466450)\]  
