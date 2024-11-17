@@ -181,7 +181,7 @@ class UnifyDeblur(nn.Module):
         if is_train:
             blur_embed, guidance_embed = self.primary_encoder(blur, guidance, True)
 
-            clsblur_embed, clsdeblur_embed, deblur_embed, guidance_embed_rep, deblur_z, guidance_z = self.contextual_encoder(blur_embed, guidance_embed[-1], True)
+            clsblur_embed, clsdeblur_embed, deblur_embed, guidance_embed_rep, deblur_z, guidance_z = self.contextual_encoder(blur_embed[-1], guidance_embed[-1], True)
 
             recover = self.decoder(blur_embed, deblur_embed)
             recover = self.unpatchifyc(recover[:,:,:], c=24, p=10)
@@ -209,7 +209,7 @@ class UnifyDeblur(nn.Module):
             for i in range(0, total_num, test_bs):
                 end_i = min(total_num, i+test_bs)
                 blur_embed = self.primary_encoder_val(blur_grids.lq[i:end_i].to('cuda:0'), self.primary_encoder)
-                deblur_embed = self.contextual_encoder(blur_embed, None, False)
+                deblur_embed = self.contextual_encoder(blur_embed[-1], None, False)
                 recover = self.decoder(blur_embed, deblur_embed)
                 recover = self.unpatchifyc(recover[:, :, :], c=24, p=10)
                 output[i:end_i] = recover.cpu().detach().numpy()
