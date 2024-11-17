@@ -139,6 +139,7 @@ python disttest.py -opt options/test/Unify_DDPD_Test.yaml
 ## Results
 
 The full evaluation results, including DPDD, ReadDOF, and LFDOF, are available on [Google Drive](https://drive.google.com/drive/folders/1-SH-xeGu8BfvYR0tKzBSdtVp4kNSMG2-?usp=sharing).
+The pretrained model is available on [Google Drive](https://drive.google.com/file/d/1DaJD3xntGIXai9ULrRWmlWmNadz8JTNL/view?usp=sharing).
 
 ## Bib 
 If this repo help you, please cite us:
