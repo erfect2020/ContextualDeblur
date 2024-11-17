@@ -55,4 +55,4 @@ class TestDataset(Dataset):
         gt_img = torch.tensor(gt_img / 255.0).float().permute(2, 0, 1)
         b_img = torch.tensor(b_img / 255.).float().permute(2, 0, 1)
 
-        return b_img, gt_img, os.path.basename(c_img_name).split('.')
+        return gt_img, b_img, os.path.basename(c_img_name).split('.')
