@@ -248,7 +248,7 @@ class TestGrids():
         step_j = crop_size if num_col == 1 else math.ceil((w - crop_size) / (num_col - 1) - 1e-8)
         step_i = crop_size if num_row == 1 else math.ceil((h - crop_size) / (num_row - 1) - 1e-8)
 
-        step_i = step_j = 47 
+        step_i = step_j = 94 
         parts = []
         idxes = []
         fea_idxes = []
