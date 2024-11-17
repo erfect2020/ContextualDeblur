@@ -74,16 +74,14 @@ idx = 0
 model.eval()
 for test_data in tqdm(test_loader):
     with torch.no_grad():
-        l_img, r_img, gt, b_img, root_name = test_data
+        gt, b_img, root_name = test_data
         gt = gt.cuda()
 
-        l_img = l_img.cuda()
-        r_img = r_img.cuda()
+
         b_img = b_img.cuda()
-        recover = model(l_img, r_img, None, False, False)
+        recover = model(b_img, None, False, False)
 
         img_dir = opt['path']['test_images']
-
 
         recover_img = (recover.squeeze().cpu() * 255.0).permute(1, 2, 0)
         recover_img = recover_img.clamp(0, 255)
