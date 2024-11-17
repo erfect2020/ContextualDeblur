@@ -19,7 +19,6 @@ from timm.models.vision_transformer import Block
 # from models.vit import Block
 from utils.pos_embed import get_2d_sincos_pos_embed
 from timm.models.layers.helpers import to_2tuple
-from models.select_fea import create_mask,create_mask_optimized
 
 
 
@@ -35,23 +34,13 @@ class PatchEmbed(nn.Module):
         self.grid_size = (img_size[0] // patch_size[0], img_size[1] // patch_size[1])
         self.num_patches = self.grid_size[0] * self.grid_size[1]
         self.flatten = flatten
-        self.select_fea_ctrl = False
-        self.global_mask = create_mask_optimized(39, 39, 6, 256)
 
         self.proj = nn.Conv2d(in_chans, embed_dim, kernel_size=patch_size, stride=patch_size)
         self.norm = norm_layer(embed_dim) if norm_layer else nn.Identity()
 
     def forward(self, x):
         x = self.proj(x)
-        if self.select_fea_ctrl:
-            # ???????A?????
-            B, C, H, W = x.shape
-            mask_expanded = self.global_mask[None, None, :, :].expand_as(x).to(x.device)
-
-            # ?????????A???mask?True???
-            x = x[mask_expanded].view(B, C, -1)
-        if self.flatten:
-            x = x.flatten(2).transpose(1, 2)  # BCHW -> BNC
+        x = x.flatten(2).transpose(1, 2)  # BCHW -> BNC
         x = self.norm(x)
         return x
 
