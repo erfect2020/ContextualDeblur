@@ -13,24 +13,9 @@ class PrimaryDeblurVal(nn.Module):
         super(PrimaryDeblurVal, self).__init__()
 
         img_size = 512
-        pretrained_ckpt = './models/mae_pretrain_vit_base.pth'
         self.pretrain_mae = mae_vit_base_patch16(img_size=img_size)
         self.pretrain_mae.patch_embed.proj.stride = 4
         self.layer_depth = depth
-        pretrained_ckpt = os.path.expanduser(pretrained_ckpt)
-        checkpoint = torch.load(pretrained_ckpt, map_location='cpu')
-        print("Load pre-trained checkpoint from: %s" % pretrained_ckpt)
-        checkpoint_model = checkpoint['model']
-        state_dict = self.pretrain_mae.state_dict()
-        for k in ['head.weight', 'head.bias']:
-            if k in checkpoint_model and checkpoint_model[k].shape != state_dict[k].shape:
-                print(f"Removing key {k} from pretrained checkpoint")
-                del checkpoint_model[k]
-        # interpolate position embedding
-        interpolate_pos_embed(self.pretrain_mae, checkpoint_model)
-        self.pretrain_mae.load_state_dict(checkpoint_model, strict=False)
-        for _, p in self.pretrain_mae.named_parameters():
-            p.requires_grad = False
 
         del self.pretrain_mae.decoder_blocks, self.pretrain_mae.decoder_pred, self.pretrain_mae.decoder_norm
         del self.pretrain_mae.decoder_embed, self.pretrain_mae.decoder_pos_embed
@@ -54,8 +39,8 @@ class PrimaryDeblurTest(nn.Module):
         self.normalize_std = [0.229, 0.224, 0.225]
         self.layer_depth = depth
         self.backup_pos = None
-        self.token_num =  961 #961 #2601 #1225 #2209 #2304 #961 #1225 #2025 #1225
-        self.img_size = 320 #320 #316 #520 # 360 #476 #360 #460
+        self.token_num =  961 
+        self.img_size = 320 
         self.mae_embed = 768
 
     def repos(self, model):
@@ -93,22 +78,9 @@ class PrimaryLightDeblur(nn.Module):
         super(PrimaryLightDeblur, self).__init__()
 
         img_size = 224
-        pretrained_ckpt = './models/TinyMIM-PT-Tstar.pth'
         self.pretrain_mae = tinymim_vit_tiny_patch16(img_size=img_size)
         self.pretrain_mae.patch_embed.proj.stride = 10
         self.layer_depth = depth
-        pretrained_ckpt = os.path.expanduser(pretrained_ckpt)
-        checkpoint = torch.load(pretrained_ckpt, map_location='cpu')
-        print("Load pre-trained checkpoint from: %s" % pretrained_ckpt)
-        checkpoint_model = checkpoint['model']
-        state_dict = self.pretrain_mae.state_dict()
-        for k in ['head.weight', 'head.bias']:
-            if k in checkpoint_model and checkpoint_model[k].shape != state_dict[k].shape:
-                print(f"Removing key {k} from pretrained checkpoint")
-                del checkpoint_model[k]
-        self.pretrain_mae.load_state_dict(checkpoint_model, strict=False)
-        for _, p in self.pretrain_mae.named_parameters():
-            p.requires_grad = True
 
         del self.pretrain_mae.blocks[5:]
 
@@ -150,8 +122,6 @@ class PrimaryLightDeblur(nn.Module):
         gt_img = normalize(gt, self.normalize_mean, self.normalize_std)
         predict_embed, gt_embed, ids = self.pretrain_mae(recover_img, gt_img, 0.0, kqv=kqv)
 
-
-
         return predict_embed[:self.layer_depth], gt_embed[:self.layer_depth]
 
 
@@ -160,28 +130,16 @@ class PrimaryDeblur(nn.Module):
         super(PrimaryDeblur, self).__init__()
 
         img_size = 224
-        pretrained_ckpt = './models/mae_pretrain_vit_base.pth'
         self.pretrain_mae = mae_vit_base_patch16(img_size=img_size)
         self.pretrain_mae.patch_embed.proj.stride = 10
         self.layer_depth = depth
-        pretrained_ckpt = os.path.expanduser(pretrained_ckpt)
-        checkpoint = torch.load(pretrained_ckpt, map_location='cpu')
-        print("Load pre-trained checkpoint from: %s" % pretrained_ckpt)
-        checkpoint_model = checkpoint['model']
-        state_dict = self.pretrain_mae.state_dict()
-        for k in ['head.weight', 'head.bias']:
-            if k in checkpoint_model and checkpoint_model[k].shape != state_dict[k].shape:
-                print(f"Removing key {k} from pretrained checkpoint")
-                del checkpoint_model[k]
-        self.pretrain_mae.load_state_dict(checkpoint_model, strict=False)
-        for _, p in self.pretrain_mae.named_parameters():
-            p.requires_grad = False
 
         del self.pretrain_mae.decoder_blocks, self.pretrain_mae.decoder_pred, self.pretrain_mae.decoder_norm
         del self.pretrain_mae.decoder_embed, self.pretrain_mae.decoder_pos_embed
         del self.pretrain_mae.blocks[5:]
 
         pos_embed = interpolate_pos_encoding(961, 768, self.pretrain_mae, 16, (10, 10), 320, 320)
+        pos_embed = interpolate_pos_encoding(1225, 768, self.pretrain_mae, 16, (10, 10), 360, 360)
         self.pos_embed_sparse = interpolate_pos_encoding(400, 768, self.pretrain_mae, 16, (16, 16), 320, 320)
         self.pos_embed_sparse = interpolate_pos_encoding(900, 768, self.pretrain_mae, 16, (7, 7), 224, 224)
         self.pos_embed_coarse = interpolate_pos_encoding(961, 768, self.pretrain_mae, 16, (10, 10), 320, 320)
